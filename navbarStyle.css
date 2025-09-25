@@ -17,7 +17,8 @@
 }
 
 /* right slot contains the menu button + dropdown */
-.menu-container { position: relative; }
+.menu-container { position: relative;   /* anchor dropdown to this box */
+  display: inline-block; /* shrink-wrap around button */ }
 
 /* Button */
 .menu-btn {
