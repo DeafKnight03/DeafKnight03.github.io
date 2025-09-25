@@ -1,138 +1,362 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="navbarStyle.css">
-  <title>Welcome | My GitHub</title>
-  <script type="text/javascript" src="navbarScript.js" defer></script>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #134E5E, #71B280);
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="navbarStyle.css">
+    <script src="navbarScript.js" defer></script>
+    <title>My Home • Short Intro & Path</title>
+    <style>
+        :root {
+            --bg: #134E5E;
+            /* page background */
+            --bg2: #71B280;
+            --bg3: #2c5364;
+            --card: #0f141aee;
+            /* translucent card */
+            --text: #e6f0f3;
+            /* main text */
+            --muted: #9eb3bd;
+            /* secondary text */
+            --accent: #71B280;
+            /* green accent */
+            --accent2: #4ea3cf;
+            /* blue accent */
+            --line: #1f3642;
+            /* timeline line */
+            --dot: #88d4ab;
+            /* timeline dot */
+            --shadow: 0 12px 30px rgba(0, 0, 0, .25);
+            --radius: 18px;
+        }
 
+        html,
+        body {
+            height: 100%;
+        }
 
-    main {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      width: 90%;
-      max-width: 1000px;
-      padding: 20px;
-    }
-    
-    .card {
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
-      text-align: center;
-      transition: transform 0.2s, background 0.2s;
-    }
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, var(--bg), var(--bg2));
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
 
-    .card:hover {
-      transform: translateY(-5px);
-      background: rgba(255, 255, 255, 0.1);
-    }
+        /* ===== Layout ===== */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 24px 18px 80px;
+        }
 
-    .card h2 {
-      margin: 10px 0;
-    }
+      
 
-    .card p {
-      color: #d1d5db;
-      font-size: 0.95rem;
-      margin-bottom: 15px;
-    }
+        .hero {
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            gap: 20px;
+            align-items: center;
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 18px 18px;
+            box-shadow: var(--shadow);
+        }
 
-    .card a {
-      display: inline-block;
-      padding: 10px 20px;
-      text-decoration: none;
-      background: #FFF;
-      color: #000;
-      font-weight: bold;
-      border-radius: 6px;
-      transition: background 0.3s;
-    }
+        .avatar {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            display: grid;
+            place-items: center;
+            color: #002;
+            font-weight: 800;
+        }
 
-    .card a:hover {
-      background: #134E5E;
-      color: #FFF;
-    }
+        .hero h1 {
+            font-size: clamp(1.4rem, 2.2vw, 2rem);
+            margin: 0 0 6px
+        }
 
-    .card img {
-      border-radius: 8px;
-      width:50px;
-      height:50px;
-    }
-  </style>
+        .hero p {
+            margin: 0;
+            color: var(--muted)
+        }
+
+        .cta {
+            margin-top: 12px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            color: #06201b;
+            border: none;
+            padding: 10px 14px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer
+        }
+
+        .btn.secondary {
+            background: #13252c;
+            color: var(--text);
+            border: 1px solid #23424f
+        }
+
+        /* ===== Path Timeline ===== */
+        .section-title {
+            margin: 36px 0 10px;
+            font-size: 1.1rem;
+            color: var(--muted);
+            font-weight: 700;
+            letter-spacing: .4px;
+            text-transform: uppercase
+        }
+
+        .timeline {
+            position: relative;
+            margin: 18px 0 0;
+            padding: 26px 0
+        }
+
+        /* center line */
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(var(--line), #335463, var(--line));
+            border-radius: 2px;
+            transform: translateX(-50%)
+        }
+
+        .item {
+            position: relative;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+            margin: 26px 0
+        }
+
+        .item:nth-child(even) .card {
+            grid-column: 1
+        }
+
+        .item:nth-child(even) .spacer {
+            grid-column: 2
+        }
+
+        .spacer {
+            position: relative;
+        }
+
+        /* dot on the center line */
+        .spacer::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 12px;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #fff 0 20%, var(--dot) 40% 60%, #0a1b21 70%)
+        }
+
+        .spacer::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 12px;
+            transform: translate(-50%, -50%);
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: rgba(136, 212, 171, .16);
+            filter: blur(2px)
+        }
+
+        .card {
+            background: rgba(9, 16, 22, .82);
+            backdrop-filter: blur(6px);
+            border: 1px solid #1e3945;
+            border-radius: 16px;
+            padding: 16px 16px;
+            box-shadow: var(--shadow);
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, .35)
+        }
+
+        .meta {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            margin-bottom: 6px
+        }
+
+        .badge {
+            font-size: .78rem;
+            background: #0f2730;
+            border: 1px solid #254957;
+            color: #bfe7f8;
+            padding: 4px 8px;
+            border-radius: 999px
+        }
+
+        .year {
+            font-weight: 800;
+            color: #97d2b1
+        }
+
+        .card h3 {
+            margin: 6px 0 6px
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.6
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            margin: 46px 0 0;
+            color: var(--muted);
+            text-align: center
+        }
+
+        /* ===== Responsive ===== */
+        @media (max-width: 820px) {
+            .item {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 22px;
+                transform: none
+            }
+
+            .spacer::before,
+            .spacer::after {
+                left: 22px;
+            }
+
+            .item .card {
+                grid-column: 1;
+                margin-left: 48px
+            }
+        }
+    </style>
 </head>
+
 <body>
-  
-  <header class="nav" id="nav">
-  <div class="right">
-    
-  </div>
+    <header class="nav" id="nav">
+            <div class="right">
 
-  <div class="brand"><img id="imgLogo" class="imgLogo" src="materialeGithub/logo.png" alt="logo"></div>
-    <div class="left"></div>
-    <div class="menu-container">
-      <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
-      <ul class="nav-links" id="menu" role="menu">
-        <li><a href="index.html" role="menuitem">Home</a></li>
-        <li><a href="contacts.html" role="menuitem">Contatti</a></li>
-        <li><a href="myRepos.html" role="menuitem">I miei lavori</a></li>
-      </ul>
-    </div>
-  
-</header>
-  
+            </div>
 
-  <main>
-    <div class="card">
-      <img src="materialeGithub/javaFX.png" alt="javaFX Logo">
-      <h2>Privacy Policy Analizer Frontend (JavaFX)</h2>
-      <p>This is a robust desktop application built using JavaFX to provide a modern and intuitive user interface for the complex task of privacy policy analysis.</p>
-      <a href="https://github.com/DeafKnight03/PrivacyPolicyAnalizerFrontend.git" target="_blank">VIEW REPO</a>
+            <div class="brand"><img id="imgLogo" class="imgLogo" src="materialeGithub/logo.png" alt="logo"></div>
+            <div class="left"></div>
+            <div class="menu-container">
+                <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+                <ul class="nav-links" id="menu" role="menu">
+                    <li><a href="index.html" role="menuitem">Home</a></li>
+                    <li><a href="contacts.html" role="menuitem">Contatti</a></li>
+                    <li><a href="myRepos.html" role="menuitem">I miei lavori</a></li>
+                </ul>
+            </div>
+
+        </header>
+    <div class="container">
+        
+
+        <section id="about" class="hero">
+            <div class="avatar">MS</div>
+            <div>
+                <h1>Hi, I’m Maninder Singh — a developer who loves coding.</h1>
+                <p>I enjoy building small, useful tools and learning by doing. This page gives a quick intro and a
+                    visual “path” of my studies and experience.</p>
+                <div class="cta">
+                    <a class="btn" href="#path">See my path</a>
+                    <a class="btn secondary" href="#contact">Get in touch</a>
+                </div>
+            </div>
+        </section>
+
+        <h2 id="path" class="section-title">My Path</h2>
+        <section class="timeline">
+            <!-- Item 0 -->
+            <div class="item">
+                <div class="spacer" aria-hidden="true"></div>
+                <div class="card">
+                    <div class="meta"><span class="badge">Project</span><span class="year">2025</span></div>
+                    <h3>Privacy policy analizer</h3>
+                    <p>A Software developed with Spring Boot and JavaFx that aims to use OPENAI LLM's to analyze user's privacy policies.</p>
+                </div>
+                
+            </div>
+            <!-- Item 1 -->
+            <div class="item">
+                <div class="spacer" aria-hidden="true"></div>
+                <div class="card">
+                    <div class="meta"><span class="badge">Education</span><span class="year">2022–2025</span></div>
+                    <h3>BSc in Computer Engineering</h3>
+                    <p>Core CE fundamentals, networks, and a thesis focused on software with integrated LLM model</p>
+                </div>
+                
+            </div>
+
+            <!-- Item 2 -->
+            <div class="item">
+                <div class="spacer" aria-hidden="true"></div>
+                <div class="card">
+                    <div class="meta"><span class="badge">Project</span><span class="year">2023</span></div>
+                    <h3>“SOScial” multi-platform App</h3>
+                    <p>Live map of urban reports in Bologna; submissions verified by admins and displayed to users. Made with Flutter</p>
+                </div>
+                
+            </div>
+
+            <!-- Item 3 -->
+            <div class="item">
+                <div class="spacer" aria-hidden="true"></div>
+                <div class="card">
+                    <div class="meta"><span class="badge">Education</span><span class="year">2017–2022</span></div>
+                    <h3>High school technical diploma</h3>
+                    <p>I studied in IIS Cerebotani (located in Lonato Del Garda) gaining my very 1st computer sciences experiences/knowledge</p>
+                </div>
+                
+            </div>
+        </section>
+
+        <h2 id="contact" class="section-title">Contact</h2>
+        <section class="hero" style="grid-template-columns:1fr">
+            <p>Want to contact me for working purposes or just say hi? Drop me a line.</p>
+            <div class="cta">
+                <a class="btn" href="mailto:maninderqwer2@gmail.com">Email me</a>
+                <a class="btn secondary" href="#">Download CV</a>
+            </div>
+        </section>
+
+        <footer>© <span id="y"></span> Maninder Singh</footer>
     </div>
 
-    <div class="card">
-      <img src="materialeGithub/spring.jpeg" alt="spring Logo">
-      <h2>Privacy Policy Analizer Backend (Java Spring)</h2>
-      <p>REST backend for Policy Analyzer, designed to: handle JSON produced by Python script (“mini-project” with 4o-mini + regex-hints), normalize & store results in PostgreSQL, expose APIs for future JavaFX UI and/or other integrations.</p>
-      <a href="https://github.com/DeafKnight03/PrivacyPolicyAnalizerBackend.git" target="_blank">VIEW REPO</a>
-    </div>
-
-    <div class="card">
-      <img src="materialeGithub/python.jpg" alt="python Logo">
-      <h2>Policy Analizer LLM Plugin with regex system</h2>
-      <p>Analyze website/app privacy policies using 4o-mini (LLM) with a regex-hints system, and save structured findings to local JSON. This mini-project is the foundation for the app — Policy Analyzer — built with Spring Boot + PostgreSQL + JavaFX.</p>
-      <a href="https://github.com/DeafKnight03/PolicyAnalizerLLM.git" target="_blank">VIEW REPO</a>
-    </div>
-
-    <div class="card">
-      <img src="materialeGithub/flutter.png" alt="flutter Logo">
-      <h2>SOScial implemented with Flutter</h2>
-      <p>
-The project involves the development of software dedicated to reporting and disseminating useful information about the city of Bologna, such as traffic, accidents, and other significant events.</p>
-      <a href="https://github.com/DeafKnight03/SOScial.git" target="_blank">VIEW REPO</a>
-    </div>
-
-    <div class="card">
-      <img src="materialeGithub/react.webp" alt="react Logo">
-      <h2>Prototype SOScial(React version)</h2>
-      <p>
-SOScial is a prototype desktop/web application for reporting and managing events and hazards in the city, developed in React and with data stored in XML files.</p>
-      <a href="https://github.com/DeafKnight03/PrototipoSOScial.git" target="_blank">VIEW REPO</a>
-    </div>
-  </main>
+    <script>
+        // tiny script to update the footer year
+        document.getElementById('y').textContent = new Date().getFullYear();
+    </script>
 </body>
+
 </html>
