@@ -6,14 +6,83 @@
 }
 /* Barra */
 .nav {
-  background: transparent;
-  color: var(--fg);
+  position: relative;           /* stacking context */
   display: flex;
   align-items: center;
   padding: 0.6rem 1rem;
   width: 100%;
   margin-top: 15px;
+  color: var(--fg);
+  background: transparent;
 }
+
+/* right slot contains the menu button + dropdown */
+.menu-container { position: relative; }
+
+/* Button */
+.menu-btn {
+  margin-left: 15px;
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid var(--muted);
+  padding: .35rem .6rem;
+  border-radius: .5rem;
+  cursor: pointer;
+  font-size: .95rem;
+}
+
+/* Dropdown (closed baseline) — IMPORTANT: no display:none */
+.nav-links {
+  position: absolute;
+  top: calc(100% + 8px);   /* just under the button */
+  right: 0;                /* align with button's right */
+  list-style: none;
+  margin: 0;
+  padding: 6px 0;
+  background: var(--bg);
+  border: 1px solid #222;
+  border-radius: 8px;
+  min-width: 160px;
+  width: max-content;      /* shrink to content */
+  box-shadow: 0 8px 20px rgba(0,0,0,.35);
+  z-index: 1000;
+
+  /* animation-friendly hidden state */
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+
+  transition:
+    max-height .28s ease,
+    opacity .22s ease,
+    transform .22s ease;
+}
+
+/* Open state */
+.nav-links.open {
+  max-height: 480px;       /* tall enough for items */
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Items */
+.nav-links a {
+  display: block;
+  padding: .5rem .9rem;
+  color: var(--fg);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav-links a:hover { background: #1a1a1a; }
+
+/* Remove these old rules to avoid conflicts */
+ /* .nav.open + .nav-links { ... }  and any display:none on .nav-links */
+
+/* Desktop — keep same behavior, or inline if you prefer later */
+
 
 .nav .left,
 .nav .right { flex: 1; }
@@ -30,61 +99,6 @@
   display: flex;
   justify-content: flex-start;
   gap: .5rem;
-}
-
-.menu-btn {
-  margin-left: 15px;
-  background: transparent;
-  color: var(--fg);
-  border: 1px solid var(--muted);
-  padding: .35rem .6rem;
-  border-radius: .5rem;
-  cursor: pointer;
-  font-size: .95rem;
-  flex: 0;                /* IMPORTANT: don’t let the button take 1/3 width */
-}
-
-/* Lista link */
-.nav-links {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: none; /* nascosto di default su mobile */
-  flex-direction: column;
-  gap: 0.2rem;
-  width: 100%;
-  background: var(--bg);
-  border-top: 1px solid #222;
-
-
-  overflow: hidden;          /* hide content when collapsed */
-  max-height: 0;             /* collapsed */
-  opacity: 0;
-  transform: translateY(-5px);
-  transition: max-height 0.3s ease, opacity 0.25s ease, transform 0.25s ease;
-  border: 1px solid #222;
-  border-radius: 6px;
-  position: absolute;
-  top: 100%;
-  right: 0;
-  min-width: 150px;
-  z-index: 1000;
-}
-
-.nav-links.open {
-  max-height: 500px;         /* big enough to fit all links */
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.nav-links a {
-  display: block;
-  padding: 0.7rem 1rem;
-  color: var(--fg);
-  text-decoration: none;
-}
-.nav-links a:hover {
-  background: #1a1a1a;
 }
 
 /* Quando aperto */
