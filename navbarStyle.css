@@ -113,9 +113,7 @@
   .menu-btn {
     display: inline-flex;
   } /* keep the button if you want */
-  .nav {
-    padding: 0.7rem 1.2rem;
-  }
+  
 
   /* keep hidden by default on desktop too */
   .nav-links {
