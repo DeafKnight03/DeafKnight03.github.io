@@ -94,6 +94,7 @@
   font-weight: 700;
   letter-spacing: .3px;
   margin: 0 auto;         /* keeps it centered between left/right */
+  margin-left: 20px;
 }
 
 .nav .right {
