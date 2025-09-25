@@ -1,17 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const btn = document.getElementById('menu-btn');
-    const nav = document.getElementById('nav');
+  const btn  = document.getElementById("menu-btn");
+  const menu = document.getElementById("menu");
 
-    btn.addEventListener('click', () => {
-      const isOpen = nav.classList.toggle('open');
-      btn.setAttribute('aria-expanded', String(isOpen));
-    });
+  if (!btn || !menu) return;
 
-    // Chiudi il menu quando si clicca fuori (mobile)
-    document.addEventListener('click', (e) => {
-      if (!nav.contains(e.target) && !document.getElementById('menu').contains(e.target)) {
-        nav.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-      }
-    });
+  btn.addEventListener("click", () => {
+    const isOpen = menu.classList.toggle("open");
+    btn.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  // close when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!menu.contains(e.target) && e.target !== btn) {
+      menu.classList.remove("open");
+      btn.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  // optional: close on Escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      menu.classList.remove("open");
+      btn.setAttribute("aria-expanded", "false");
+      btn.focus();
+    }
+  });
 });
