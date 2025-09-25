@@ -1,0 +1,65 @@
+
+    :root { --bg:#111; --fg:#fff; --muted:#aaa; --accent:#e53935; }
+    /* Barra */
+    .nav {
+      background: transparent;
+      color: var(--fg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 1rem;
+    }
+    .brand {
+      font-weight: 700;
+      letter-spacing: .3px;
+    }
+    /* Bottone menu (mobile) */
+    .menu-btn {
+      background: transparent;
+      color: var(--fg);
+      border: 1px solid var(--muted);
+      padding: .35rem .6rem;
+      border-radius: .5rem;
+      cursor: pointer;
+      font-size: .95rem;
+    }
+    .menu-btn:focus { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+    /* Lista link */
+    .nav-links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: none;                /* nascosto di default su mobile */
+      flex-direction: column;
+      gap: .2rem;
+      width: 100%;
+      background: var(--bg);
+      border-top: 1px solid #222;
+    }
+    .nav-links a {
+      display: block;
+      padding: .7rem 1rem;
+      color: var(--fg);
+      text-decoration: none;
+    }
+    .nav-links a:hover { background: #1a1a1a; }
+
+    /* Quando aperto */
+    .nav.open + .nav-links { display: flex; }
+
+    /* Desktop */
+    @media (min-width: 700px) {
+      .menu-btn { display: none; }
+      .nav { padding: 0.7rem 1.2rem; }
+      .nav-links {
+        display: flex !important;
+        position: static;
+        flex-direction: row;
+        gap: .5rem;
+        border-top: none;
+        width: auto;
+      }
+      .nav.open + .nav-links { display: flex; } /* irrilevante ma innocuo su desktop */
+      .nav-links a { padding: .4rem .7rem; border-radius: .4rem; }
+    }
