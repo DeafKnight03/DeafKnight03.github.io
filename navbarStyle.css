@@ -9,7 +9,6 @@
   position: relative;           /* stacking context */
   display: flex;
   align-items: center;
-  padding: 0.6rem 1rem;
   width: 100%;
   margin-top: 15px;
   color: var(--fg);
