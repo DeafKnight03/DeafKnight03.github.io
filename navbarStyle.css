@@ -95,6 +95,9 @@
   letter-spacing: .3px;
   margin: 0 auto;         /* keeps it centered between left/right */
   margin-left: 60px;
+ 
+}
+.nav .brand .img {
   height: 50px;
   width: 50px;
 }
