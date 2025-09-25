@@ -1,4 +1,4 @@
-
+document.addEventListener("DOMContentLoaded", () => {
     const btn = document.getElementById('menu-btn');
     const nav = document.getElementById('nav');
 
@@ -14,3 +14,4 @@
         btn.setAttribute('aria-expanded', 'false');
       }
     });
+});
