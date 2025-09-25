@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="navbarStyle.css">
   <title>Welcome | My GitHub</title>
+  <script type="text/javascript" src="navbarScript.js"></script>
   <style>
     body {
       margin: 0;
@@ -88,23 +89,6 @@
     <li><a href="#" role="menuitem">Login</a></li>
   </ul>
 
-  <script>
-    const btn = document.getElementById('menu-btn');
-    const nav = document.getElementById('nav');
-
-    btn.addEventListener('click', () => {
-      const isOpen = nav.classList.toggle('open');
-      btn.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    // Chiudi il menu quando si clicca fuori (mobile)
-    document.addEventListener('click', (e) => {
-      if (!nav.contains(e.target) && !document.getElementById('menu').contains(e.target)) {
-        nav.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-      }
-    });
-  </script>
   <main>
     <div class="card">
       <img src="materialeGithub/javaFX.png" alt="javaFX Logo">
