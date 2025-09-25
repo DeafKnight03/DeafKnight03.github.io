@@ -48,18 +48,23 @@
     /* Quando aperto */
     .nav.open + .nav-links { display: flex; }
 
-    /* Desktop */
     @media (min-width: 700px) {
-      .menu-btn { display: inline-flex; }
-      .nav { padding: 0.7rem 1.2rem; }
-      .nav-links {
-        display: flex !important;
-        position: static;
-        flex-direction: row;
-        gap: .5rem;
-        border-top: none;
-        width: auto;
-      }
-      .nav.open + .nav-links { display: flex; } /* irrilevante ma innocuo su desktop */
-      .nav-links a { padding: .4rem .7rem; border-radius: .4rem; }
-    }
+  .menu-btn { display: inline-flex; } /* keep the button if you want */
+  .nav { padding: 0.7rem 1.2rem; }
+
+  /* keep hidden by default on desktop too */
+  .nav-links { 
+    display: none; 
+    flex-direction: row; 
+    gap: .5rem; 
+    border-top: none; 
+    width: auto; 
+  }
+
+  /* show only when header has .open */
+  .nav.open + .nav-links { 
+    display: flex; 
+  }
+
+  .nav-links a { padding: .4rem .7rem; border-radius: .4rem; }
+}
