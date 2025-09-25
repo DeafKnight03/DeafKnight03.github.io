@@ -50,7 +50,7 @@
 
     /* Desktop */
     @media (min-width: 700px) {
-      .menu-btn { display: none; }
+      .menu-btn { display: inline-flex; }
       .nav { padding: 0.7rem 1.2rem; }
       .nav-links {
         display: flex !important;
