@@ -98,7 +98,30 @@
     <h1>👋 Welcome to My GitHub</h1>
     <p>Explore my repositories below:</p>
   </header>
+  <ul class="nav-links" id="menu" role="menu">
+    <li><a href="#" role="menuitem">Home</a></li>
+    <li><a href="#" role="menuitem">Servizi</a></li>
+    <li><a href="#" role="menuitem">Contatti</a></li>
+    <li><a href="#" role="menuitem">Login</a></li>
+  </ul>
 
+  <script>
+    const btn = document.getElementById('menu-btn');
+    const nav = document.getElementById('nav');
+
+    btn.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    // Chiudi il menu quando si clicca fuori (mobile)
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target) && !document.getElementById('menu').contains(e.target)) {
+        nav.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  </script>
   <main>
     <div class="card">
       <img src="materialeGithub/javaFX.png" alt="javaFX Logo">
