@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="navbarStyle.css">
+  <title>Contacts | My GitHub</title>
+  <script type="text/javascript" src="navbarScript.js" defer></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #134E5E, #71B280);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      width: 90%;
+      max-width: 800px;
+      padding: 20px;
+    }
+    
+    .card {
+      background: #0f141aee;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+      text-align: center;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .card h2 {
+      margin: 10px 0;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 20px;
+      text-decoration: none;
+      background: #FFF;
+      color: #000;
+      font-weight: bold;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .card a:hover {
+      background: #134E5E;
+      color: #FFF;
+    }
+
+    .card img {
+      border-radius: 8px;
+      width:50px;
+      height:50px;
+    }
+  </style>
+</head>
+<body>
+  
+  <header class="nav" id="nav">
+    <div class="right"></div>
+
+    <div class="brand">
+      <img id="imgLogo" class="imgLogo" src="materialeGithub/logo.png" alt="logo">
+    </div>
+    <div class="left"></div>
+    <div class="menu-container">
+      <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu">Menu</button>
+      <ul class="nav-links" id="menu" role="menu">
+        <li><a href="index.html" role="menuitem">Home</a></li>
+        <li><a href="contacts.html" role="menuitem">Contatti</a></li>
+        <li><a href="myRepos.html" role="menuitem">I miei lavori</a></li>
+      </ul>
+    </div>
+  </header>
+  
+
+  <main>
+    <div class="card">
+      <img src="materialeGithub/linkedin.png" alt="LinkedIn Logo">
+      <h2>LinkedIn</h2>
+      <a href="https://www.linkedin.com/in/manindersingh03" target="_blank">Visit Profile</a>
+    </div>
+
+    <div class="card">
+      <img src="materialeGithub/email.png" alt="Email Icon">
+      <h2>Email</h2>
+      <a href="mailto:maninderqwer2@gmail.com">maninderqwer2@gmail.com</a>
+    </div>
+
+    <div class="card">
+      <img src="materialeGithub/github.png" alt="GitHub Logo">
+      <h2>GitHub</h2>
+      <a href="https://github.com/DeafKnight03" target="_blank">Visit GitHub</a>
+    </div>
+
+    <div class="card">
+      <img src="materialeGithub/phone.png" alt="Phone Icon">
+      <h2>Phone</h2>
+      <a href="tel:+393533478636">+39 353 347 8636</a>
+    </div>
+  </main>
+</body>
+</html>
